@@ -3,6 +3,11 @@
 <p>
     <strong>Text:</strong>
     <%= @post.text %>
+        <% if @post.updated_at %>
+            <p class='card-text'>Updated <%= @post.updated_at %></p>
+        <% else %>  
+            <p class='card-text'>Created <%= @post.created_at %></p>          
+        <% end %>
 </p>
 <%= link_to 'Edit Post', edit_post_path %>
 
