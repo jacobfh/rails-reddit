@@ -4,7 +4,11 @@ class PostsController < ApplicationController
     end
 
     def new
-        @post = Post.new
+        if current_user
+            @post = Post.new
+        else
+            redirect_to new_login_path, alert: "Please log in first."
+        end
     end
 
     def create
@@ -14,6 +18,19 @@ class PostsController < ApplicationController
         else
          render 'new'
        end
+    end
+
+    def edit
+        @post = Post.find(params[:id])
+        if current_user
+            if current_user.id == @post.user_id
+                @post = Post.find(params[:id])
+            else
+                redirect_to @post, alert: 'Only post creator can edit.'
+            end
+        else
+            redirect_to new_login_path, alert: "Please log in first."
+        end
     end
 
     def update
@@ -34,10 +51,6 @@ class PostsController < ApplicationController
         @post.destroy
 
         redirect_to posts_path
-    end
-
-    def edit
-        @post = Post.find(params[:id])
     end
 
     private
