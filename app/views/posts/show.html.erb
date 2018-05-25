@@ -1,17 +1,24 @@
-<h1>Post</h1>
-<p>
-    <strong>Title:</strong>
-    <%= @post.title %>
-</p>
+<h1><%= @post.title %></h1>
 
 <p>
     <strong>Text:</strong>
     <%= @post.text %>
 </p>
+<%= link_to 'Edit Post', edit_post_path %>
 
  <h2>Comments</h2>
-<%= link_to 'Add a Comment', new_comment_path(post_id: @post.id) %>
+<%= link_to 'Add a comment', new_comment_path(post_id: @post.id) %>
 
+<% @post.comments.each do |comment|%>
+    <div class='bg-light my-2'>
+        <p class='font-weight-bold'><%= comment.user%></p>
+        <p class="font-weight-light"><%= comment.text%></p>
+        <%= link_to 'Edit comment', edit_comment_path(post_id: @post.id) %>
+        <%= link_to 'Delete Comment', comment_path(comment),
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+    </div>
+<% end %>
 
 <%= link_to 'Home', posts_path %>
-<%= link_to 'Edit', edit_post_path %>

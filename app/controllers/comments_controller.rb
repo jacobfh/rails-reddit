@@ -1,8 +1,17 @@
 class CommentsController < PostsController
 
+    def show
+        @comment = Comment.find(params[:id])
+    end
+
+
     def new
-        @comment = Comment.new
-        @post = Post.find(params[:post_id])
+        if current_user
+            @comment = Comment.new
+            @post = Post.find(params[:post_id])
+        else
+            redirect_to @post, alert: "You must be logged in to comment."
+        end
     end
 
     def create
@@ -16,12 +25,17 @@ class CommentsController < PostsController
 
     def edit
         @comment = Comment.find(params[:id])
+        if current_user.id == @comment.user_id
+            @post = Post.find(params[:post_id])
+        else
+            redirect_to post_path(@comment.post_id), alert: 'Only comment creator can edit.'
+        end
     end
 
     def update
         @comment = Comment.find(params[:id])
         if @comment.save
-            redirect_to posts/[:post_id]
+            redirect_to post_path(@comment.post_id)
         else
             render 'new'
         end
@@ -29,9 +43,11 @@ class CommentsController < PostsController
 
     def destroy
         @comment = Comment.find(params[:id])
-        @comment.destroy
-
-        redirect_to posts/[:post_id]
+        @id = @comment.post_id
+        if current_user.id == @comment.user_id
+            @comment.destroy
+            redirect_to post_path(@id)
+        end
     end
 
     private
