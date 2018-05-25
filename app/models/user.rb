@@ -10,4 +10,20 @@
 #
 
 class User < ApplicationRecord
+
+    has_many :posts
+    has_many :comments
+
+    validates :username, presence: true
+    validates_uniqueness_of :username
+
+    has_secure_password
+
+
+    def to_s
+        username
+    end
+
+
+
 end

@@ -71,3 +71,12 @@ SyntaxError (/Users/mollybrown/Momentum_homework/rails-reddit/app/controllers/po
   
 app/controllers/posts_controller.rb:8: syntax error, unexpected keyword_end
 app/controllers/posts_controller.rb:24: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/rails/info/routes" for 127.0.0.1 at 2018-05-25 11:56:51 -0400
+Processing by Rails::InfoController#routes as HTML
+  Rendering /Users/mollybrown/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/railties-5.2.0/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /Users/mollybrown/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/actionpack-5.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb [39 times] (33.7ms)
+  Rendered /Users/mollybrown/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/actionpack-5.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (25.7ms)
+  Rendered /Users/mollybrown/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/railties-5.2.0/lib/rails/templates/rails/info/routes.html.erb within layouts/application (78.9ms)
+Completed 200 OK in 112ms (Views: 96.5ms | ActiveRecord: 0.0ms)
+
+

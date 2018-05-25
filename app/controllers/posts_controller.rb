@@ -26,9 +26,14 @@ class PostsController < ApplicationController
     end
 
     def show
+        @post = Post.find(params[:id])
     end
 
     def delete
+        @post = Post.find(params[:id])
+        @post.destroy
+
+        redirect_to posts_path
     end
 
     def edit
@@ -37,5 +42,5 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).
+        params.require(:post).permit(:title, :text, :user_id)
 end
