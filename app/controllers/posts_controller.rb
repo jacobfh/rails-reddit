@@ -55,8 +55,12 @@ class PostsController < ApplicationController
 
     def upvote
         @post = Post.find(params[:id])
-        @post.votes.create
-        redirect_to(post_path(@post))
+        if current_user
+            @post.votes.create
+            redirect_to(post_path(@post))
+        else
+            redirect_to @post, alert: 'You must be logged in to vote.'
+        end
       end
 
     private
