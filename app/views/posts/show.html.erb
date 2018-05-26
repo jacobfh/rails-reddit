@@ -11,22 +11,22 @@
         <p class='card-text'>  <%= pluralize(@post.votes.count, "Vote") %></p>
         <p class='card-text'> <%= button_to '🐸', upvote_post_path(@post), method: :post %></p>
 </p>
-<%= link_to 'Edit Post', edit_post_path %>
+<p class="my-4"><%= link_to 'Edit Post', edit_post_path %> |
 <%= link_to 'Delete Post', post_path(@post),
-            method: :delete %>
+            method: :delete %> </p>
 
  <h2>Comments</h2>
 <%= link_to 'Add a comment', new_comment_path(post_id: @post.id) %>
 
 <% @post.comments.each do |comment|%>
     <div class='bg-light my-2'>
-        <p class='font-weight-bold'><%= comment.user%></p>
+
+        <strong><%= comment.user %></strong> <em class="text-muted"><%=  comment.created_at %> </em>
         <p class="font-weight-light"><%= comment.text%></p>
-        <%= link_to 'Edit comment', edit_comment_path(post_id: @post.id) %>
+        <%= link_to 'Edit comment', edit_comment_path(post_id: @post.id) %> |
         <%= link_to 'Delete Comment', comment_path(comment),
                method: :delete %>
 </p>
     </div>
 <% end %>
 
-<%= link_to 'Home', posts_path %>

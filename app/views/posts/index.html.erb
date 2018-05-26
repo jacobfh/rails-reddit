@@ -17,9 +17,9 @@
                 <%= link_to 'read more', post_path(post) %>
                 
                 <p class="my-4"> <% if post.updated_at %> </p>
-                <p class='card-text'>Updated <%= post.updated_at %></p>
+                <p class='card-text'>Updated <%= timeago(post.updated_at) %></p>
                 <% else %>  
-                <p class='card-text'>Created <%= post.created_at %></p>
+                <p class='card-text'>Created <%= timeago(post.created_at) %></p>
 
                 <% end %>
                 
