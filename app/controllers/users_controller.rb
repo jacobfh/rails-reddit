@@ -13,6 +13,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def index
+        @myposts = current_user.posts.all
+    end
+
     
 
     def user_params
