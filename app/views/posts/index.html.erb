@@ -4,7 +4,7 @@
 <% @posts.each do |post| %>
     <div class='row my-5'>
         <div class='col-1' style='background-color: #9FBD95'>
-        <p class='my-5'><%= pluralize(post.votes.count, "Vote") %></p>
+        <p class='my-5'><%= post.votes.count %> 🐸 </p>
         </div>
         <div class='col-11'>
         <div class='card-body' style='background-color: #D4FCC7;'>
