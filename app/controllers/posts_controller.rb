@@ -46,11 +46,14 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
     end
 
-    def delete
+    def destroy
         @post = Post.find(params[:id])
-        @post.destroy
-
-        redirect_to posts_path
+        if current_user.id == @post.user_id
+            @post.destroy
+            redirect_to posts_path
+        else
+            redirect_to @post, alert: 'Only post creator can delete.'
+        end
     end
 
     def upvote
