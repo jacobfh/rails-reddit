@@ -4,9 +4,9 @@
     <strong>Text:</strong>
     <%= @post.text %>
         <% if @post.updated_at %>
-            <p class='card-text'>Updated <%= @post.updated_at %></p>
+            <p class='card-text'>Updated <%= time_ago_in_words(@post.updated_at) %> ago</p>
         <% else %>  
-            <p class='card-text'>Created <%= @post.created_at %></p>          
+            <p class='card-text'>Created <%= time_ago_in_words(@post.created_at) %> ago</p>          
         <% end %>
         <p class='card-text'>  <%= pluralize(@post.votes.count, "Vote") %></p>
         <p class='card-text'> <%= button_to '🐸', upvote_post_path(@post), method: :post %></p>
@@ -21,7 +21,7 @@
 <% @post.comments.each do |comment|%>
     <div class='bg-light my-2'>
 
-        <strong><%= comment.user %></strong> <em class="text-muted"><%=  comment.created_at %> </em>
+        <strong><%= comment.user %></strong> <em class="text-muted"><%=  time_ago_in_words(comment.created_at) %> ago </em>
         <p class="font-weight-light"><%= comment.text%></p>
         <%= link_to 'Edit comment', edit_comment_path(post_id: @post.id) %> |
         <%= link_to 'Delete Comment', comment_path(comment),
