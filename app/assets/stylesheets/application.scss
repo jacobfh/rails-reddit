@@ -14,3 +14,18 @@
  */
 
 @import "bootstrap";
+@import url("https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Merriweather+Sans|Roboto");
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.ribbit {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 8rem;
+    color: black;
+}
