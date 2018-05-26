@@ -23,8 +23,14 @@
           <%= link_to "Register New User", new_user_path, class: "btn btn-outline-primary btn-sm" %>
         </div>
       <% end %>
-      <h1><%= link_to 'Ribbit', posts_path %></h1>
-
+      <div class='row'>
+      <div class='col-3'>
+      <%= image_tag('frog2.jpg', size: "180") %>
+      </div>
+      <div class-'col-9'>
+      <h1 class='ribbit'><%= link_to 'Ribbit', posts_path %></h1>
+      </div>
+      </div>
       <% flash.each do |name, msg| -%>
         <%= content_tag :div, msg, class: flash_classes(name) %>
       <% end %>
