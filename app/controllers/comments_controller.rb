@@ -6,11 +6,11 @@ class CommentsController < PostsController
 
 
     def new
+        @post = Post.find(params[:post_id])
         if current_user
             @comment = Comment.new
-            @post = Post.find(params[:post_id])
         else
-            redirect_to @post, alert: "You must be logged in to comment."
+            redirect_to post_path(@post), alert: "You must be logged in to comment."
         end
     end
 
