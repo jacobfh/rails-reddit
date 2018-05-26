@@ -12,6 +12,8 @@
         <p class='card-text'> <%= button_to '🐸', upvote_post_path(@post), method: :post %></p>
 </p>
 <%= link_to 'Edit Post', edit_post_path %>
+<%= link_to 'Delete Post', post_path(@post),
+            method: :delete %>
 
  <h2>Comments</h2>
 <%= link_to 'Add a comment', new_comment_path(post_id: @post.id) %>
@@ -22,8 +24,7 @@
         <p class="font-weight-light"><%= comment.text%></p>
         <%= link_to 'Edit comment', edit_comment_path(post_id: @post.id) %>
         <%= link_to 'Delete Comment', comment_path(comment),
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+               method: :delete %>
 </p>
     </div>
 <% end %>

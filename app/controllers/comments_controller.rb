@@ -47,6 +47,8 @@ class CommentsController < PostsController
         if current_user.id == @comment.user_id
             @comment.destroy
             redirect_to post_path(@id)
+        else
+            redirect_to post_path(@id), alert: 'Only comment creator can delete.'
         end
     end
 
