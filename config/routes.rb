@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
    
-  resources :posts
+  resources :posts do
+    member do
+    post 'upvote'
+    end
+  end
 
   resources :comments
 
