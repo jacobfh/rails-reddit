@@ -9,7 +9,7 @@
         <%= "Posted by #{post.user}"%></h4>
         <p class='card-text'><%= post.text %></p>
         <p class='card-text'>  <%= pluralize(post.votes.count, "Vote") %></p>
-                <p class='card-text'> <%= button_to '🐸', upvote_post_path(post), method: :post %></p>
+                
             <% if post.updated_at %>
                 <p class='card-text'>Updated <%= post.updated_at %></p>
             <% else %>  
