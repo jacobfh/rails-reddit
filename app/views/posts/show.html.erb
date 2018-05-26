@@ -8,6 +8,8 @@
         <% else %>  
             <p class='card-text'>Created <%= @post.created_at %></p>          
         <% end %>
+        <p class='card-text'>  <%= pluralize(@post.votes.count, "Vote") %></p>
+        <p class='card-text'> <%= button_to '🐸', upvote_post_path(@post), method: :post %></p>
 </p>
 <%= link_to 'Edit Post', edit_post_path %>
 

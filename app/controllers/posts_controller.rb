@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     def index
-        @posts = Post.all
+        @posts = Post.all.sort_by { |post| post.votes.count }.reverse
     end
 
     def new
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
     def upvote
         @post = Post.find(params[:id])
         @post.votes.create
-        redirect_to(posts_path)
+        redirect_to(post_path(@post))
       end
 
     private
