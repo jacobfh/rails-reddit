@@ -6,14 +6,15 @@
         <%= link_to post.title, post_path(post) %></h3>
         <h4 class='card-subtitle text-muted' style='font-size: 1.2rem;'>
         <%= "Posted by #{post.user}"%></h4>
-        <p class='card-text'><%= post.text %></p>
+        <%= truncate post.text, length: 260 %>
+        <%= link_to 'read more', post_path(post) %>
         <p class='card-text'>  <%= pluralize(post.votes.count, "Vote") %></p>
             <% if post.updated_at %>
                 <p class='card-text'>Updated <%= post.updated_at %></p>
             <% else %>  
                 <p class='card-text'>Created <%= post.created_at %></p>
             <% end %>
-        <p># OF COMMENTS</p>
-        <p>SORT BY # VOTES</p></p>
+            <p class='card-text'>  <%= pluralize(post.votes.count, "Vote") %></p>
+            <p class='card-text'>  <%= pluralize(post.comments.count, "Comment") %></p>
     </div>
 <% end %>
