@@ -15,10 +15,11 @@
             <%= truncate post.text, length: 260 %>
             <%= link_to 'read more', post_path(post) %>
             
-            <p class="my-4"> <% if post.updated_at %> </p>
-            <p class='card-text'>Updated <%= post.updated_at %></p>
-            <% else %>  
-            <p class='card-text'>Created <%= post.created_at %></p>
+            <div class="my-4"> <% if post.updated_at %> </p>
+                <p class='card-text'> Updated <%= time_ago_in_words(post.updated_at) %> ago </p>
+                <% else %>  
+                <p class='card-text'>Created <%= time_ago_in_words(post.updated_at) %>
+            </div>
 
             <% end %>
             
