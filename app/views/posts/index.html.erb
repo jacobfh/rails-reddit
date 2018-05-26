@@ -1,9 +1,13 @@
 
         <%= link_to 'Make a New Post', new_post_path %>
 
-        <% @posts.each do |post| %>
-            
-            <div class='card-body my-2' style='background-color: #D4FCC7;'>
+<% @posts.each do |post| %>
+    <div class='row my-5'>
+        <div class='col-1' style='background-color: #9FBD95'>
+        <p class='my-5'><%= pluralize(post.votes.count, "Vote") %></p>
+        </div>
+        <div class='col-11'>
+        <div class='card-body' style='background-color: #D4FCC7;'>
                 <h3  class='card-title' style='font-size: 1.4rem;'>
                 <%= link_to post.title, post_path(post) %></h3>
                 <h4 class='card-subtitle text-muted' style='font-size: 1.2rem;'>
@@ -18,9 +22,9 @@
                 <p class='card-text'>Created <%= post.created_at %></p>
 
                 <% end %>
-                <p class='card-text'>  <%= pluralize(post.votes.count, "Vote") %></p>
+                
                 <p class='card-text'>  <%= pluralize(post.comments.count, "Comment") %></p>
-  
-</div>
-
+        </div>
+        </div>
+    </div>
 <% end %>
