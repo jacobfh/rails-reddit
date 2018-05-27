@@ -1,20 +1,21 @@
 
-        <%= link_to 'Make a New Post', new_post_path %>
+        <%= link_to 'Make a New Ribbit', new_post_path, class:'btn text-light', style:'background-color: #137547;' %>
 
 <% @posts.each do |post| %>
     <div class='row my-5'>
-        <div class='col-1' style='background-color: #9FBD95'>
-            <p class='my-5'><%= post.votes.count %> 🐸 </p>
+        <div class='col-1' style='background-color: #FF7780;'>
+            <p class='my-5 pt-5 text-center', style='font-size: 2rem;'><%= post.votes.count %> 🐸 </p>
         </div>
-        <div class='col-11'>
-            <div class='card-body' style='background-color: #D4FCC7;'>
-                <h3  class='card-title' style='font-size: 1.4rem;'>
-                <%= link_to post.title, post_path(post) %></h3>
+        <div class='card col-11'>
+            <div class="card-header" style='font-size: 1.4rem; background-color: #9bc53d;'><%= link_to post.title, post_path(post), class:'text-dark' %></div>
+            <div class='card-body' style='background-color: rgba(155,197,61,0.6);'>
+                <%# <h3  class='card-title' style='font-size: 1.4rem;'>
+                </h3> %>
                 <h4 class='card-subtitle text-muted' style='font-size: 1.2rem;'>
                 <%= "Posted by #{post.user}"%></h4>
               
                 <%= truncate post.text, length: 260 %>
-                <%= link_to 'read more', post_path(post) %>
+                <%= link_to 'read more', post_path(post), style:'color: #137547;' %>
                 
                 <% if post.updated_at %>
                 <p class='card-text my-4'> Updated <%= time_ago_in_words(post.updated_at) %> ago </p>
