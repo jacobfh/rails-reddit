@@ -1,30 +1,24 @@
-<h1><%= current_user %>'s Posts</h1>
+<h1><%= current_user %>'s Ribbits</h1>
 
 <% @myposts.each do |post| %>
     <div class='row my-5'>
-    <div class='col-1' style='background-color: #9FBD95'>
-    <p class='my-5'><%= post.votes.count %> 🐸 </p>
-    </div>
-    <div class='col-11'>
-    <div class='card-body' style='background-color: #D4FCC7;'>
-            <h3  class='card-title' style='font-size: 1.4rem;'>
-            <%= link_to post.title, post_path(post) %></h3>
-            <h4 class='card-subtitle text-muted' style='font-size: 1.2rem;'>
-            <%= "Posted by #{post.user}"%></h4>
-          
-            <%= truncate post.text, length: 260 %>
-            <%= link_to 'read more', post_path(post) %>
-            
-            <div class="my-4"> <% if post.updated_at %> </p>
-                <p class='card-text'> Updated <%= time_ago_in_words(post.updated_at) %> ago </p>
-                <% else %>  
-                <p class='card-text'>Created <%= time_ago_in_words(post.updated_at) %>
+        <div class='col-1' style='background-color: #FF7780;'>
+            <p class='my-5 pt-5 text-center', style='font-size: 2.4rem;'><%= post.votes.count %> 🐸 </p>
+        </div>
+        <div class='card col-11 rounded-0 p-0 border-0'>
+            <div class="card-header rounded-0" style='font-size: 1.4rem; background-color: rgba(155,197,61,0.7);'><%= link_to post.title, post_path(post), class:'text-dark' %></div>
+            <div class='card-body' style='background-color: rgba(155,197,61,0.5);'>
+                <h4 class='card-subtitle' style='font-size: 1.2rem; color: #137547;'>
+                <%= "Posted by #{post.user}"%></h4>
+                <%= truncate post.text, length: 260 %>
+                <%= link_to 'read more', post_path(post), style:'color: #137547;' %>
+                <p class='card-text mt-3'><%= pluralize(post.comments.count, "Comment") %></p>
             </div>
-
+            <% if post.updated_at %>
+                <div class="card-footer rounded-0" style='background-color: rgba(155,197,61,0.7);'> Updated <%= time_ago_in_words(post.updated_at) %> ago </div>
+                <% else %>  
+                <div class="card-footer rounded-0" style='background-color: rgba(155,197,61,0.7);'>Created <%= time_ago_in_words(post.updated_at) %> </div>
             <% end %>
-            
-            <p class='card-text'>  <%= pluralize(post.comments.count, "Comment") %></p>
+        </div>
     </div>
-    </div>
-</div>
 <% end %>
