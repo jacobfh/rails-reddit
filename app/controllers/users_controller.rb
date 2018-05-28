@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to new_login_path, notice: "Your username was created successfully. Please login."
         else
-            render :new
+            redirect_to new_user_path, alert: "Please enter a username and password."
         end
     end
 

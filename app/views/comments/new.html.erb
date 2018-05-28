@@ -5,11 +5,11 @@
     <%= form.hidden_field :post_id, value: @post.id %>
     <div class="form-group">
         <%= form.label :text %><br>
-        <%= form.text_field :text %>
+        <%= form.text_area :text, class:'form-control' %>
     </div>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit class:'btn text-light', style:'background-color: #137547;' %>
   </p>
  
 <% end %>
