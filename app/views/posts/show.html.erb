@@ -28,7 +28,7 @@
 
         <strong><%= comment.user %></strong> <em class="text-muted"><%=  time_ago_in_words(comment.created_at) %> ago </em>
         <p class="font-weight-light"><%= comment.text%></p>
-        <% if current_user.id == comment.user_id %>
+        <% if current_user && current_user.id == comment.user_id %>
         <%= link_to 'Edit comment', edit_comment_path(post_id: @post.id), class:'btn text-light btn-sm', style:'background-color: #137547;'  %> |
         <%= link_to 'Delete Comment', comment_path(comment),
                method: :delete, class:'btn text-light btn-sm', style:'background-color: #137547;' %>
