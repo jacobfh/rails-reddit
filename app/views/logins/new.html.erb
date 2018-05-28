@@ -1,4 +1,4 @@
-<h1 class='my-3' style='font-size: 1.8rem;'>Log in to your RailsReddit Account:</h1>
+<h1 class='my-3' style='font-size: 1.8rem;'>Log in to your Ribbit Account:</h1>
 
 <%= form_tag login_url do %>
   <div class="form-group">
@@ -11,7 +11,6 @@
     <%= password_field_tag :password %>
   </div>
 
-  <button class="btn btn-primary mb-2" type="submit">Log in</button>
+  <button class='btn text-light', style='background-color: #137547;' type="submit">Log in</button>
 <% end %>
 
-<%= link_to 'Home', posts_path, class: "btn btn-outline-secondary my-4" %>

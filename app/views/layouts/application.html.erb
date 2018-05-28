@@ -13,22 +13,30 @@
   <div class="container">
       <% if current_user %>
         <div class="text-right my-4">
-          Logged in as <%= current_user %> |
-          <%= link_to "Log out", logout_path %>
+          Logged in as <strong><%= current_user %></strong>  |  
+          <%= link_to 'View my Ribbits', users_path, class:'btn text-light btn-sm', style:'background-color: #137547;' %>  |  
+          <%= link_to "Log out", logout_path, class:'btn text-light btn-sm', style:'background-color: #137547;' %>
         </div>
       <% else %>
-        <div class="text-right my-4"></div>
-          <%= link_to "Log in", new_login_path, class: "btn btn-outline-primary btn-sm" %>  |  
-          <%= link_to "Register New User", new_user_path, class: "btn btn-outline-primary btn-sm" %>
+        <div class="text-right my-4">
+          <%= link_to "Log in", new_login_path, class:'btn text-light btn-sm', style:'background-color: #137547;' %>  |  
+          <%= link_to "Register New User", new_user_path, class:'btn text-light btn-sm', style:'background-color: #137547;' %>
         </div>
       <% end %>
-      <h1>Ribbit</h1>
-
+      <div class='row mx-5'>
+      <div class='col-3'>
+      <%= image_tag('frog2.jpg', class: "w-100") %>
+      </div>
+      <div class-'col-9'>
+      <h1 class='ribbit'><%= link_to 'Ribbit', posts_path, class:'text-dark py-3' %></h1>
+      </div>
+      </div>
       <% flash.each do |name, msg| -%>
         <%= content_tag :div, msg, class: flash_classes(name) %>
-      <% end -%>
+      <% end %>
 
-
+    
     <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     def index
-        @posts = Post.all
+        @posts = Post.all.sort_by { |post| post.votes.count }.reverse
     end
 
     def new
@@ -46,17 +46,24 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
     end
 
-    def delete
+    def destroy
         @post = Post.find(params[:id])
-        @post.destroy
-
-        redirect_to posts_path
+        if current_user.id == @post.user_id
+            @post.destroy
+            redirect_to posts_path
+        else
+            redirect_to @post, alert: 'Only post creator can delete.'
+        end
     end
 
     def upvote
         @post = Post.find(params[:id])
-        @post.votes.create
-        redirect_to(posts_path)
+        if current_user
+            @post.votes.create
+            redirect_to(post_path(@post))
+        else
+            redirect_to @post, alert: 'You must be logged in to vote.'
+        end
       end
 
     private
